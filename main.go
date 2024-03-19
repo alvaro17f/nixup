@@ -30,6 +30,12 @@ func main() {
 	ui.Spinner("pulling changes...")
 	utils.GitPull()
 
+	if *flags.Update {
+		utils.TitleMaker("Nix Update:")
+		ui.Spinner("updating nixos")
+		utils.NixUpdate()
+	}
+
 	if utils.GitDiff() {
 		utils.TitleMaker("Git Changes:")
 		ui.Spinner("checking status...")
@@ -43,12 +49,6 @@ func main() {
 				utils.GitAdd()
 			}
 		}
-	}
-
-	if *flags.Update {
-		utils.TitleMaker("Nix Update:")
-		ui.Spinner("updating nixos")
-		utils.NixUpdate()
 	}
 
 	utils.TitleMaker("Nix Rebuild:")
