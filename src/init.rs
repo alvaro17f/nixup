@@ -1,19 +1,13 @@
 use std::process::exit;
 
-use color_print::cformat;
-use dialoguer::{theme::ColorfulTheme, Confirm};
+use crate::{utils::{commands::Cmd, tools::confirm}, Cli};
 
-use crate::{utils::commands::Cmd, Cli};
 pub fn init(cli: Cli) -> std::io::Result<()> {
 	let mut cmd = Cmd::new(cli);
 
 	cmd.config();
-	if Confirm::with_theme(&ColorfulTheme::default())
-		.with_prompt(cformat!("<y>Do you want to update your system? (Y/n): "))
-		.default(true)
-		.interact()
-		.unwrap()
-	{
+
+	if confirm("Do you want to update your system? (Y/n): ", true) {
 		cmd.git_pull();
 
 		if cmd.cli.update {
@@ -22,12 +16,7 @@ pub fn init(cli: Cli) -> std::io::Result<()> {
 
 		if cmd.git_diff() {
 			cmd.git_status();
-			if Confirm::with_theme(&ColorfulTheme::default())
-				.with_prompt(cformat!("<y>Do you want to add this changes to the stage? (Y/n): "))
-				.default(true)
-				.interact()
-				.unwrap()
-			{
+			if confirm("Do you want to add this changes to the stage? (Y/n): ", true) {
 				cmd.git_add();
 			};
 		};
