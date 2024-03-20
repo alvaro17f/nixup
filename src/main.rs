@@ -1,9 +1,9 @@
-mod init;
+mod app;
 mod utils;
 
+use app::app;
 use clap::{command, CommandFactory, Parser, Subcommand};
 use clap_complete::Shell;
-use init::init;
 
 use crate::utils::tools::{get_home_dir, get_hostname};
 
@@ -50,7 +50,7 @@ fn handle_commands(cli: Cli) -> std::io::Result<()> {
 			clap_complete::generate(shell, &mut Cli::command(), "nixup", &mut std::io::stdout().lock());
 		}
 		None => {
-			let _ = init(cli);
+			let _ = app(cli);
 		}
 	}
 	Ok(())

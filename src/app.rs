@@ -2,7 +2,7 @@ use std::process::exit;
 
 use crate::{utils::{commands::Cmd, tools::confirm}, Cli};
 
-pub fn init(cli: Cli) -> std::io::Result<()> {
+pub fn app(cli: Cli) -> std::io::Result<()> {
 	let mut cmd = Cmd::new(cli);
 
 	cmd.config();

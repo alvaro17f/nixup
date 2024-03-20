@@ -19,7 +19,7 @@ pub fn confirm(prompt: &str, default_value: bool) -> bool {
 		.with_prompt(cformat!("<y>{}</y>", prompt))
 		.default(default_value)
 		.interact()
-		.unwrap()
+		.unwrap_or(false)
 }
 
 pub fn pause() -> Result<()> {
