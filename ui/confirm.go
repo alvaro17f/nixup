@@ -1,8 +1,7 @@
 package ui
 
 import (
-	"log"
-
+	"github.com/alvaro17f/nixup/utils"
 	"github.com/charmbracelet/huh"
 )
 
@@ -20,7 +19,7 @@ func Confirm(message string, defaultConfirm ...bool) bool {
 		Value(&confirm).
 		Run()
 	if err != nil {
-		log.Fatalf("Error executing command: %v", err)
+		utils.ErrorFormatFatal("Error executing command", err)
 	}
 	return confirm
 }

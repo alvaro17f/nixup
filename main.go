@@ -16,11 +16,7 @@ func main() {
 	pflag.Parse()
 
 	utils.TitleMaker("Nixup Configuration:")
-	fmt.Println("> Repo:", *flags.Repo)
-	fmt.Println("> Update:", *flags.Update)
-	fmt.Println("> Keep:", *flags.Keep)
-	fmt.Println("> Diff:", *flags.Diff)
-	fmt.Println("")
+	utils.Configuration()
 
 	proceed = ui.Confirm("Do you want to update your system?")
 	if !proceed {
@@ -59,8 +55,8 @@ func main() {
 	utils.NixKeep()
 
 	if *flags.Diff {
-    utils.TitleMaker("Nix Diff:")
-    ui.Spinner("nix diff...")
-    utils.NixDiff()
-  }
+		utils.TitleMaker("Nix Diff:")
+		ui.Spinner("nix diff...")
+		utils.NixDiff()
+	}
 }
