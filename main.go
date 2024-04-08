@@ -18,7 +18,7 @@ func main() {
 	utils.TitleMaker("Nixup Configuration:")
 	utils.Configuration()
 
-	proceed = ui.Confirm("Do you want to update your system?")
+	proceed = ui.Confirm(fmt.Sprintf("Welcome %s, Do you want to update your system?", utils.GetUser().Name))
 	if !proceed {
 		os.Exit(0)
 	}
