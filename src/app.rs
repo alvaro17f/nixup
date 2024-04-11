@@ -1,13 +1,20 @@
 use std::process::exit;
 
-use crate::{utils::{commands::Cmd, tools::confirm}, Cli};
+use crate::{
+	utils::{
+		commands::Cmd,
+		tools::{confirm, get_name},
+	},
+	Cli,
+};
 
 pub fn app(cli: Cli) -> std::io::Result<()> {
+	let name = get_name();
 	let mut cmd = Cmd::new(cli);
 
 	cmd.config();
 
-	if confirm("Do you want to update your system? (Y/n): ", true) {
+	if confirm(&format!("Hi {}, Do you want to update your system? (Y/n): ", name), true) {
 		cmd.git_pull();
 
 		if cmd.cli.update {

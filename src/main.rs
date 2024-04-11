@@ -15,19 +15,19 @@ struct Cli {
 	commands: Option<Commands>,
 	/// Path to the dotfiles repository
 	#[arg(short = 'r', long = "repo", default_value_t = format!("{}/.dotfiles", get_home_dir()))]
-	repo:     String,
+	repo: String,
 	/// Hostname
 	#[arg(short = 'n', long = "hostname", default_value_t = get_hostname() )]
 	hostname: String,
 	/// Number of generations to keep
 	#[arg(short = 'k', long = "keep", default_value = "10")]
-	keep:     i32,
+	keep: i32,
 	/// Update flake lock files
 	#[arg(short = 'u', long = "update", default_value = "false")]
-	update:   bool,
+	update: bool,
 	/// Show the difference between the current and the last generation
 	#[arg(short = 'd', long = "diff", default_value = "false")]
-	diff:     bool,
+	diff: bool,
 }
 #[derive(Subcommand, Debug, PartialEq)]
 enum Commands {
@@ -50,7 +50,7 @@ fn handle_commands(cli: Cli) -> std::io::Result<()> {
 			clap_complete::generate(shell, &mut Cli::command(), "nixup", &mut std::io::stdout().lock());
 		}
 		None => {
-			let _ = app(cli);
+			app(cli).unwrap();
 		}
 	}
 	Ok(())

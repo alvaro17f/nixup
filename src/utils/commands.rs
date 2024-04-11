@@ -1,4 +1,7 @@
-use std::{io::{BufRead, BufReader}, process::{Command, Stdio}};
+use std::{
+	io::{BufRead, BufReader},
+	process::{Command, Stdio},
+};
 
 use color_print::cprintln;
 use nix::unistd::geteuid;
@@ -12,7 +15,9 @@ pub struct Cmd {
 }
 
 impl Cmd {
-	pub fn new(cli: Cli) -> Self { Cmd { cli } }
+	pub fn new(cli: Cli) -> Self {
+		Cmd { cli }
+	}
 
 	fn exec_command(&mut self, command: &str) {
 		let mut cmd = Command::new("sh")
@@ -99,7 +104,9 @@ impl Cmd {
 		self.exec_command("git status --porcelain")
 	}
 
-	pub fn git_add(&mut self) { self.exec_command("git add .") }
+	pub fn git_add(&mut self) {
+		self.exec_command("git add .")
+	}
 
 	pub fn nix_update(&mut self) {
 		title_maker("Nix Update");

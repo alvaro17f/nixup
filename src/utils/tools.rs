@@ -1,9 +1,12 @@
 #![allow(dead_code)]
 
-use std::{io::{self, BufRead, Result}, process::Command};
-
 use color_print::{cformat, cprintln};
 use dialoguer::{theme::ColorfulTheme, Confirm};
+use std::{
+	io::{self, BufRead, Result},
+	process::Command,
+};
+use whoami;
 
 pub fn clear() -> Result<()> {
 	Command::new("clear").status()?;
@@ -35,25 +38,18 @@ pub fn title_maker(text: &str) {
 	cprintln!("\n<b>{}\n* <r>{}</r> *\n{}</b>", borders, text, borders);
 }
 
-pub fn get_hostname() -> String {
-	let hostname = hostname::get();
-	match hostname {
-		Ok(h) => h.to_string_lossy().to_string(),
-		Err(_) => panic!(
-			"{:?}",
-			"Failed to get hostname. Please consider passing it using `-n` flag".to_string()
-		),
-	}
+pub fn get_name() -> String {
+	whoami::realname()
 }
+
+pub fn get_username() -> String {
+	whoami::username()
+}
+
+pub fn get_hostname() -> String {
+	whoami::fallible::hostname().expect("Failed to get hostname")
+}
+
 pub fn get_home_dir() -> String {
-	let home = dirs::home_dir();
-	match home {
-		Some(h) => h.to_string_lossy().to_string(),
-		None => {
-			panic!(
-				"{:?}",
-				"Failed to get home directory. Please consider passing it using `-r` flag".to_string()
-			)
-		}
-	}
+	format!("/home/{}", get_username())
 }
