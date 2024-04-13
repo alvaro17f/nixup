@@ -1,7 +1,7 @@
 package ui
 
 import (
-	"github.com/alvaro17f/nixup/utils"
+	"github.com/alvaro17f/nixup/internal/utils"
 	"github.com/charmbracelet/huh"
 )
 
