@@ -1,5 +1,3 @@
-use ratatui::style::Color;
-
 pub struct Colors;
 
 #[allow(dead_code)]
