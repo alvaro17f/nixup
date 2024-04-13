@@ -2,6 +2,7 @@
 
 Nixup is a command line tool for managing NixOS configuration.
 
+> :warning: **Work in Progress**: This project is currently under development. Some features may not be complete and may change in the future.
 ## Installation
 
 To install Nixup, you can clone the repository and compile the source code:
