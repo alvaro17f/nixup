@@ -7,6 +7,14 @@ import (
 	"github.com/spf13/cobra"
 )
 
+const (
+	RepoFlag     = "repo"
+	HostnameFlag = "hostname"
+	DiffFlag     = "diff"
+	KeepFlag     = "keep"
+	UpdateFlag   = "update"
+)
+
 var rootCmd = &cobra.Command{
 	Use:   "nixup",
 	Short: "Update your nixos system with a single command",
@@ -29,9 +37,9 @@ func Execute() {
 }
 
 func init() {
-	rootCmd.PersistentFlags().BoolP("diff", "d", false, "Show the diff of the last generation")
-	rootCmd.PersistentFlags().StringP("hostname", "n", utils.GetHostname(), "Set the hostname")
-	rootCmd.PersistentFlags().IntP("keep", "k", 10, "Keep last generations")
-	rootCmd.PersistentFlags().StringP("repo", "r", "~/.dotfiles", "Path to the git repository")
-	rootCmd.PersistentFlags().BoolP("update", "u", false, "Update the system")
+	rootCmd.PersistentFlags().BoolP(DiffFlag, "d", false, "Show the diff of the last generation")
+	rootCmd.PersistentFlags().StringP(HostnameFlag, "n", utils.GetHostname(), "Set the hostname")
+	rootCmd.PersistentFlags().IntP(KeepFlag, "k", 10, "Keep last generations")
+	rootCmd.PersistentFlags().StringP(RepoFlag, "r", "~/.dotfiles", "Path to the git repository")
+	rootCmd.PersistentFlags().BoolP(UpdateFlag, "u", false, "Update the system")
 }

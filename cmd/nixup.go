@@ -14,11 +14,11 @@ var proceed bool
 
 func Nixup(cmd *cobra.Command, args []string) {
 	var (
-		repo     = cmd.Flag("repo").Value.String()
-		hostname = cmd.Flag("hostname").Value.String()
-		diff     = cmd.Flag("diff").Changed
-		keep     = cmd.Flag("keep").Value.String()
-		update   = cmd.Flag("update").Changed
+		repo     = cmd.Flag(RepoFlag).Value.String()
+		hostname = cmd.Flag(HostnameFlag).Value.String()
+		diff     = cmd.Flag(DiffFlag).Changed
+		keep     = cmd.Flag(KeepFlag).Value.String()
+		update   = cmd.Flag(UpdateFlag).Changed
 	)
 
 	utils.TitleMaker("Nixup Configuration:")
