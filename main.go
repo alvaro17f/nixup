@@ -10,6 +10,10 @@ func main() {
 
 	version := os.Getenv("VERSION")
 
+	if version == "" {
+		version = "dev"
+	}
+
 	cmd.SetVersionInfo(version)
 	cmd.Execute()
 }
