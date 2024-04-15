@@ -18,7 +18,7 @@ func Confirm(message string, defaultConfirm ...bool) bool {
 		Negative("No").
 		Value(&confirm)).Run()
 	if err != nil {
-		utils.ErrorFormatFatal("Error executing command", nil)
+		utils.ErrorFormatFatal("Error executing command", err)
 	}
 	return confirm
 }
