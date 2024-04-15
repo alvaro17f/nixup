@@ -12,14 +12,13 @@ func Confirm(message string, defaultConfirm ...bool) bool {
 		confirm = defaultConfirm[0]
 	}
 
-	err := huh.NewConfirm().
+	err := NewHuh(huh.NewConfirm().
 		Title(message).
 		Affirmative("Yes").
 		Negative("No").
-		Value(&confirm).
-		Run()
+		Value(&confirm)).Run()
 	if err != nil {
-		utils.ErrorFormatFatal("Error executing command", err)
+		utils.ErrorFormatFatal("Error executing command", nil)
 	}
 	return confirm
 }

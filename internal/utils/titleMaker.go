@@ -10,6 +10,6 @@ func TitleMaker(text string) {
 	border := strings.Repeat("*", textLen+4)
 	fmt.Printf(
 		"\n%s\n%s %s %s\n%s\n",
-		Blue(border), Blue("*"), Red(text), Blue("*"), Blue(border),
+		Color.BlueStr(border), Color.BlueStr("*"), Color.RedStr(text), Color.BlueStr("*"), Color.BlueStr(border),
 	)
 }

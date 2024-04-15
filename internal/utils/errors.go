@@ -8,14 +8,14 @@ import (
 func ErrorFormat(text string, err error) {
 	fmt.Printf(
 		"%s %s %s\n",
-		Red("⚠"), Yellow(text+":"), Red(err),
+		Color.RedStr("⚠"), Color.YellowStr(text+":"), Color.RedStr(err.Error()),
 	)
 }
 
 func ErrorFormatFatal(text string, err error) {
 	fmt.Printf(
 		"%s %s %s\n",
-		Red("⚠"), Yellow(text+":"), Red(err),
+		Color.RedStr("⚠"), Color.YellowStr(text+":"), Color.RedStr(err.Error()),
 	)
 	os.Exit(0)
 }

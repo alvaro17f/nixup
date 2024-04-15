@@ -2,6 +2,7 @@ package utils
 
 import (
 	"fmt"
+	"strconv"
 )
 
 const (
@@ -16,11 +17,12 @@ const (
 )
 
 func Configuration(repo string, hostname string, update bool, keep string, diff bool) {
-	fmt.Println(Blue("• Repo:"), Yellow(repo))
-	fmt.Println(Blue("• Hostname:"), Yellow(hostname))
-	fmt.Println(Blue("• Update:"), Yellow(update))
-	fmt.Println(Blue("• Keep:"), Yellow(keep))
-	fmt.Println(Blue("• Diff:"), Yellow(diff))
+
+	fmt.Println(Color.BlueStr("• Repo:"), Color.YellowStr(repo))
+	fmt.Println(Color.BlueStr("• Hostname:"), Color.YellowStr(hostname))
+	fmt.Println(Color.BlueStr("• Update:"), Color.YellowStr(strconv.FormatBool(update)))
+	fmt.Println(Color.BlueStr("• Keep:"), Color.YellowStr(keep))
+	fmt.Println(Color.BlueStr("• Diff:"), Color.YellowStr(strconv.FormatBool(diff)))
 	fmt.Println("")
 }
 
