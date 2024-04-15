@@ -37,8 +37,8 @@ func Execute() {
 	}
 }
 
-func SetVersionInfo(version, commit, date string) {
-	rootCmd.Version = fmt.Sprintf("%s (Built on %s from Git SHA %s)", version, date, commit)
+func SetVersionInfo(version string) {
+	rootCmd.Version = fmt.Sprintf("%s", version)
 }
 
 func init() {
