@@ -17,7 +17,7 @@ var versionCmd = &cobra.Command{
 	Short: "Print the version number of nixup",
 	Long:  `All software has versions. This is nixup's`,
 	Run: func(cmd *cobra.Command, args []string) {
-		out, err := exec.Command("git", "describe", "--tags").Output()
+		out, err := exec.Command("git", "describe", "--tags", "--abbrev=0").Output()
 		if err != nil {
 			log.Fatal(err)
 		}
