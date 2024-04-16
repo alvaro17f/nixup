@@ -4,7 +4,6 @@ tasks:
   default:
     cmds:
       - go build -o ./bin/nixup .
-
   run:
     cmds:
       - ./bin/nixup
