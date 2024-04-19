@@ -11,3 +11,7 @@ tasks:
   run:
     cmds:
       - ./bin/nixup
+
+  vhs:
+    cmds:
+      - vhs ./vhs/nixup.tape
