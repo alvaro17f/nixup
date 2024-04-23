@@ -6,7 +6,7 @@ import (
 	"os/exec"
 )
 
-func ExecuteCommand(format string, args ...interface{}) (string, error) {
+func RunCommand(format string, args ...interface{}) (string, error) {
 	shell := os.Getenv("SHELL")
 	if shell == "" {
 		shell = "bash"
@@ -18,9 +18,5 @@ func ExecuteCommand(format string, args ...interface{}) (string, error) {
 
 	output, err := cmd.Output()
 
-	if err != nil {
-		return "", fmt.Errorf("error executing command: %w", err)
-	}
-
-	return string(output), nil
+	return string(output), err
 }

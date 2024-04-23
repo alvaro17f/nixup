@@ -1,16 +1,17 @@
-version: '3'
+version: "3"
 
 tasks:
   default:
     cmds:
-      - go build -o ./bin/nixup . && ./bin/nixup
+      - go build -o ./bin/nixup .
+      - ./bin/nixup {{.CLI_ARGS}}
 
   build:
     cmds:
-      - go build -o ./bin/nixup .
+      - go build -o ./bin/nixup . {{.CLI_ARGS}}
   run:
     cmds:
-      - ./bin/nixup
+      - ./bin/nixup {{.CLI_ARGS}}
 
   vhs:
     cmds:

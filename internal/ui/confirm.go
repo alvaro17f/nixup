@@ -1,7 +1,7 @@
 package ui
 
 import (
-	"github.com/alvaro17f/nixup/internal/utils"
+	"github.com/alvaro17f/nixup/internal/errors"
 	"github.com/charmbracelet/huh"
 )
 
@@ -18,7 +18,7 @@ func Confirm(message string, defaultConfirm ...bool) bool {
 		Negative("No").
 		Value(&confirm)).Run()
 	if err != nil {
-		utils.ErrorFormatFatal("Error executing command", err)
+		errors.ErrorFormatFatal("Error executing command", err)
 	}
 	return confirm
 }

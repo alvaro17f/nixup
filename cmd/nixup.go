@@ -5,6 +5,7 @@ import (
 	"os"
 	"strconv"
 
+	"github.com/alvaro17f/nixup/internal/features"
 	"github.com/alvaro17f/nixup/internal/ui"
 	"github.com/alvaro17f/nixup/internal/utils"
 	"github.com/spf13/cobra"
@@ -21,49 +22,49 @@ func Nixup(cmd *cobra.Command, args []string) {
 		update   = cmd.Flag(UpdateFlag).Changed
 	)
 
-	utils.TitleMaker("Nixup Configuration:")
-	utils.Configuration(repo, hostname, update, keep, diff)
+	ui.TitleMaker("Nixup Configuration:")
+	features.Configuration(repo, hostname, update, keep, diff)
 
 	proceed = ui.Confirm(fmt.Sprintf("Hi %s, Do you want to update your system?", utils.GetUser().Name))
 	if !proceed {
 		os.Exit(0)
 	}
-	utils.TitleMaker("Git Pull:")
+	ui.TitleMaker("Git Pull:")
 	ui.Spinner("pulling changes...")
-	utils.GitPull(cmd.Flag("repo").Value.String())
+	features.GitPull(cmd.Flag("repo").Value.String())
 
 	if cmd.Flag("update").Changed {
-		utils.TitleMaker("Nix Update:")
+		ui.TitleMaker("Nix Update:")
 		ui.Spinner("updating nixos")
-		utils.NixUpdate(repo)
+		features.NixUpdate(repo)
 	}
 
-	if utils.GitDiff(repo) {
-		utils.TitleMaker("Git Changes:")
+	if features.GitDiff(repo) {
+		ui.TitleMaker("Git Changes:")
 		ui.Spinner("checking status...")
-		output := utils.GitStatus(repo)
+		output := features.GitStatus(repo)
 
 		if output != "" {
 			fmt.Println(output)
 			proceed = ui.Confirm("Do you want to add these changes to the stage?")
 			if proceed {
 				ui.Spinner("adding changes...")
-				utils.GitAdd(repo)
+				features.GitAdd(repo)
 			}
 		}
 	}
 
-	utils.TitleMaker("Nix Rebuild:")
+	ui.TitleMaker("Nix Rebuild:")
 	ui.Spinner("nixos rebuild...")
-	utils.NixRebuild(repo, hostname)
+	features.NixRebuild(repo, hostname)
 
 	ui.Spinner("deleting older generations...")
 	keepInt, _ := strconv.Atoi(keep)
-	utils.NixKeep(keepInt)
+	features.NixKeep(keepInt)
 
 	if cmd.Flag("diff").Changed {
-		utils.TitleMaker("Nix Diff:")
+		ui.TitleMaker("Nix Diff:")
 		ui.Spinner("nix diff...")
-		utils.NixDiff()
+		features.NixDiff()
 	}
 }
