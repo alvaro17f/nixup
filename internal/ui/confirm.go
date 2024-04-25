@@ -20,5 +20,6 @@ func Confirm(message string, defaultConfirm ...bool) bool {
 	if err != nil {
 		errors.ErrorFormatFatal("Error executing command", err)
 	}
+
 	return confirm
 }

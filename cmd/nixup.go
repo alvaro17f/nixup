@@ -13,13 +13,13 @@ import (
 
 var proceed bool
 
-func Nixup(cmd *cobra.Command, args []string) {
+func Nixup(cmd *cobra.Command) {
 	var (
-		repo     = cmd.Flag(RepoFlag).Value.String()
-		hostname = cmd.Flag(HostnameFlag).Value.String()
-		diff     = cmd.Flag(DiffFlag).Changed
-		keep     = cmd.Flag(KeepFlag).Value.String()
-		update   = cmd.Flag(UpdateFlag).Changed
+		repo     = cmd.Flag(repo.long).Value.String()
+		hostname = cmd.Flag(hostname.long).Value.String()
+		diff     = cmd.Flag(diff.long).Changed
+		keep     = cmd.Flag(keep.long).Value.String()
+		update   = cmd.Flag(update.long).Changed
 	)
 
 	ui.TitleMaker("Nixup Configuration:")
@@ -29,6 +29,7 @@ func Nixup(cmd *cobra.Command, args []string) {
 	if !proceed {
 		os.Exit(0)
 	}
+
 	ui.TitleMaker("Git Pull:")
 	ui.Spinner("pulling changes...")
 	features.GitPull(cmd.Flag("repo").Value.String())
@@ -42,11 +43,14 @@ func Nixup(cmd *cobra.Command, args []string) {
 	if features.GitDiff(repo) {
 		ui.TitleMaker("Git Changes:")
 		ui.Spinner("checking status...")
+
 		output := features.GitStatus(repo)
 
 		if output != "" {
 			fmt.Println(output)
+
 			proceed = ui.Confirm("Do you want to add these changes to the stage?")
+
 			if proceed {
 				ui.Spinner("adding changes...")
 				features.GitAdd(repo)
@@ -59,6 +63,7 @@ func Nixup(cmd *cobra.Command, args []string) {
 	features.NixRebuild(repo, hostname)
 
 	ui.Spinner("deleting older generations...")
+
 	keepInt, _ := strconv.Atoi(keep)
 	features.NixKeep(keepInt)
 

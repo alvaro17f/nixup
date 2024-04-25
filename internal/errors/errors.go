@@ -33,5 +33,6 @@ func ErrorFormatFatal(text string, err error) {
 			colors.Color.RedStr("⚠"), colors.Color.YellowStr(text),
 		)
 	}
+
 	os.Exit(0)
 }

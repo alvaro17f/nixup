@@ -1,19 +1,9 @@
 package cmd
 
 import (
-	"fmt"
 	"os"
 
-	"github.com/alvaro17f/nixup/internal/utils"
 	"github.com/spf13/cobra"
-)
-
-const (
-	RepoFlag     = "repo"
-	HostnameFlag = "hostname"
-	DiffFlag     = "diff"
-	KeepFlag     = "keep"
-	UpdateFlag   = "update"
 )
 
 var rootCmd = &cobra.Command{
@@ -25,12 +15,22 @@ var rootCmd = &cobra.Command{
 **********
 a tool to update your nixos system with a single command.
 `,
-	Run: func(cmd *cobra.Command, args []string) {
-		Nixup(cmd, args)
+	Run: func(cmd *cobra.Command, _ []string) {
+		Nixup(cmd)
 	},
 }
 
+func flags() {
+	rootCmd.PersistentFlags().BoolP(diff.getFlagDetails())
+	rootCmd.PersistentFlags().StringP(hostname.getFlagDetails())
+	rootCmd.PersistentFlags().IntP(keep.getFlagDetails())
+	rootCmd.PersistentFlags().StringP(repo.getFlagDetails())
+	rootCmd.PersistentFlags().BoolP(update.getFlagDetails())
+}
+
 func Execute() {
+	flags()
+
 	err := rootCmd.Execute()
 	if err != nil {
 		os.Exit(1)
@@ -38,13 +38,5 @@ func Execute() {
 }
 
 func SetVersionInfo(version string) {
-	rootCmd.Version = fmt.Sprintf("%s", version)
-}
-
-func init() {
-	rootCmd.PersistentFlags().BoolP(DiffFlag, "d", false, "Show the diff of the last generation")
-	rootCmd.PersistentFlags().StringP(HostnameFlag, "n", utils.GetHostname(), "Set the hostname")
-	rootCmd.PersistentFlags().IntP(KeepFlag, "k", 10, "Keep last generations")
-	rootCmd.PersistentFlags().StringP(RepoFlag, "r", "~/.dotfiles", "Path to the git repository")
-	rootCmd.PersistentFlags().BoolP(UpdateFlag, "u", false, "Update the system")
+	rootCmd.Version = version
 }

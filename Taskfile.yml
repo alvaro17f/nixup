@@ -3,16 +3,22 @@ version: "3"
 tasks:
   default:
     cmds:
-      - go build -o ./bin/nixup .
-      - ./bin/nixup {{.CLI_ARGS}}
-
+      - task: lint
+      - task: build
+      - task: run
+  skip:
+    cmds:
+      - task: build
+      - task: run
   build:
     cmds:
-      - go build -o ./bin/nixup . {{.CLI_ARGS}}
+      - go build -o ./bin/nixup .
   run:
     cmds:
       - ./bin/nixup {{.CLI_ARGS}}
-
+  lint:
+    cmds:
+      - golangci-lint run ./...
   vhs:
     cmds:
       - vhs ./vhs/nixup.tape

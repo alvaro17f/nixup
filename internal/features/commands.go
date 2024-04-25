@@ -17,11 +17,13 @@ const (
 	nixUpdateCmd  = "cd %s && nix flake update"
 	nixRebuildCmd = "sudo nixos-rebuild switch --flake %s#%s --show-trace"
 	nixKeepCmd    = "sudo nix-env --profile /nix/var/nix/profiles/system --delete-generations +%d"
-	nixDiffCmd    = "nix profile diff-closures --profile /nix/var/nix/profiles/system | tac | awk '/Version/{print; exit} 1' | tac"
+	nixDiffCmd    = `nix profile diff-closures --profile /nix/var/nix/profiles/system |
+		tac |
+		awk '/Version/{print; exit} 1' |
+		tac`
 )
 
 func Configuration(repo string, hostname string, update bool, keep string, diff bool) {
-
 	fmt.Println(colors.Color.BlueStr("• Repo:"), colors.Color.YellowStr(repo))
 	fmt.Println(colors.Color.BlueStr("• Hostname:"), colors.Color.YellowStr(hostname))
 	fmt.Println(colors.Color.BlueStr("• Update:"), colors.Color.YellowStr(strconv.FormatBool(update)))
@@ -32,13 +34,16 @@ func Configuration(repo string, hostname string, update bool, keep string, diff 
 
 func GitPull(repo string) {
 	out, err := utils.RunCommand(gitPullCmd, repo)
-	fmt.Print(out)
 	if err != nil {
 		errors.ErrorFormat("Error executing git pull", err)
 	}
+
+	fmt.Print(out)
 }
+
 func GitDiff(repo string) bool {
 	_, err := utils.RunCommand(gitDiffCmd, repo)
+
 	return err != nil
 }
 
@@ -47,45 +52,51 @@ func GitStatus(repo string) string {
 	if err != nil {
 		errors.ErrorFormat("Error executing git status", err)
 	}
+
 	return out
 }
 
 func GitAdd(repo string) {
 	out, err := utils.RunCommand(gitAddCmd, repo)
-	fmt.Print(out)
 	if err != nil {
 		errors.ErrorFormat("Error executing git add", err)
 	}
+
+	fmt.Print(out)
 }
 
 func NixUpdate(repo string) {
 	out, err := utils.RunCommand(nixUpdateCmd, repo)
-	fmt.Print(out)
 	if err != nil {
 		errors.ErrorFormat("Error executing nix flake update", err)
 	}
+
+	fmt.Print(out)
 }
 
 func NixRebuild(repo string, hostname string) {
 	out, err := utils.RunCommand(nixRebuildCmd, repo, hostname)
-	fmt.Print(out)
 	if err != nil {
 		errors.ErrorFormat("Error executing nixos rebuild", err)
 	}
+
+	fmt.Print(out)
 }
 
 func NixKeep(keep int) {
 	out, err := utils.RunCommand(nixKeepCmd, keep)
-	fmt.Print(out)
 	if err != nil {
 		errors.ErrorFormat("Error executing deleting older generations", err)
 	}
+
+	fmt.Print(out)
 }
 
 func NixDiff() {
 	out, err := utils.RunCommand(nixDiffCmd)
-	fmt.Print(out)
 	if err != nil {
 		errors.ErrorFormat("Error showing nix diff", err)
 	}
+
+	fmt.Print(out)
 }

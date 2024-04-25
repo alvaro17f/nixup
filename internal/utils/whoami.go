@@ -17,6 +17,7 @@ func GetUser() *User {
 	if err != nil {
 		errors.ErrorFormatFatal("Error getting user", err)
 	}
+
 	return &User{
 		Name:     sysUser.Name,
 		Username: sysUser.Username,
@@ -28,5 +29,6 @@ func GetHostname() string {
 	if err != nil {
 		errors.ErrorFormatFatal("Error getting hostname", err)
 	}
+
 	return hostname
 }
