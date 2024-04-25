@@ -40,7 +40,7 @@ var keep = flagDetails[int]{
 	description: "Keep last generations",
 }
 
-const defaultRepoValue = "~./dotfiles"
+const defaultRepoValue = "~/.dotfiles"
 
 var repo = flagDetails[string]{
 	long:        "repo",
