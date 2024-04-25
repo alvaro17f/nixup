@@ -11,7 +11,7 @@
       system = "x86_64-linux";
     };
     lib = pkgs.lib;
-    version = "0.1.1";
+    version = "0.2.0";
   in
   {
     defaultPackage.x86_64-linux = pkgs.buildGoModule {
