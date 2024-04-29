@@ -4,11 +4,7 @@ import (
 	"github.com/alvaro17f/nixup/cmd"
 )
 
-var (
-	version = "dev"
-	commit  = "none"
-	date    = "unknown"
-)
+var version = "dev"
 
 func main() {
 	cmd.SetVersionInfo(version)

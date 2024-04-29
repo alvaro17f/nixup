@@ -6,7 +6,7 @@ import (
 )
 
 func Confirm(message string, defaultConfirm ...bool) bool {
-	var confirm bool = true
+	confirm := true
 
 	if len(defaultConfirm) > 0 {
 		confirm = defaultConfirm[0]
