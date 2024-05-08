@@ -4,8 +4,8 @@ go 1.22.2
 
 require (
 	github.com/charmbracelet/huh v0.3.0
-	github.com/charmbracelet/huh/spinner v0.0.0-20240417163504-acfe24c3f5b5
-	github.com/charmbracelet/lipgloss v0.10.0
+	github.com/charmbracelet/huh/spinner v0.0.0-20240508140610-13957916abf0
+	github.com/charmbracelet/lipgloss v0.10.1-0.20240506202754-3ee5dcab73cb
 	github.com/spf13/cobra v1.8.0
 )
 
@@ -14,8 +14,9 @@ require (
 	github.com/aymanbagabas/go-osc52/v2 v2.0.1 // indirect
 	github.com/catppuccin/go v0.2.0 // indirect
 	github.com/charmbracelet/bubbles v0.18.0 // indirect
-	github.com/charmbracelet/bubbletea v0.25.0 // indirect
-	github.com/containerd/console v1.0.4 // indirect
+	github.com/charmbracelet/bubbletea v0.26.2 // indirect
+	github.com/charmbracelet/x/exp/term v0.0.0-20240508200021-63ec5bdef608 // indirect
+	github.com/erikgeiser/coninput v0.0.0-20211004153227-1c3628e74d0f // indirect
 	github.com/inconshreveable/mousetrap v1.1.0 // indirect
 	github.com/lucasb-eyer/go-colorful v1.2.0 // indirect
 	github.com/mattn/go-isatty v0.0.20 // indirect
@@ -28,7 +29,7 @@ require (
 	github.com/rivo/uniseg v0.4.7 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
 	golang.org/x/sync v0.7.0 // indirect
-	golang.org/x/sys v0.19.0 // indirect
-	golang.org/x/term v0.19.0 // indirect
-	golang.org/x/text v0.14.0 // indirect
+	golang.org/x/sys v0.20.0 // indirect
+	golang.org/x/term v0.20.0 // indirect
+	golang.org/x/text v0.15.0 // indirect
 )

@@ -17,11 +17,10 @@ linters:
     - errcheck
     - errname
     - errorlint
-    - execinquery
     - goconst
     - gocritic
     - gofmt
-    - gomnd
+    - mnd
     - gosec
     - gosimple
     - govet
