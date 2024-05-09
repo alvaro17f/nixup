@@ -11,7 +11,7 @@
       system = "x86_64-linux";
     };
     lib = pkgs.lib;
-    version = "0.2.2";
+    version = "0.2.3";
   in
   {
     defaultPackage.x86_64-linux = pkgs.buildGoModule {
@@ -19,7 +19,7 @@
       version = version;
       src = self;
 
-      vendorHash = "sha256-ls73S+ZOnMJjhg5zZPo44sOFfh8Khh7rGDKWgXB15R4=";
+      vendorHash = "sha256-4+NTO8mE+sVI5mjHRRTs+aV4ek2Kzk/W62gckmKIUv8=";
 
       CGO_ENABLED = 0;
 
