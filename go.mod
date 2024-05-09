@@ -1,6 +1,6 @@
 module github.com/alvaro17f/nixup
 
-go 1.22
+go 1.22.2
 
 require (
 	github.com/charmbracelet/huh v0.3.0
