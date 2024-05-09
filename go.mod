@@ -15,7 +15,7 @@ require (
 	github.com/catppuccin/go v0.2.0 // indirect
 	github.com/charmbracelet/bubbles v0.18.0 // indirect
 	github.com/charmbracelet/bubbletea v0.26.2 // indirect
-	github.com/charmbracelet/x/exp/term v0.0.0-20240508200021-63ec5bdef608 // indirect
+	github.com/charmbracelet/x/exp/term v0.0.0-20240509130423-e48c874ef5d2 // indirect
 	github.com/erikgeiser/coninput v0.0.0-20211004153227-1c3628e74d0f // indirect
 	github.com/inconshreveable/mousetrap v1.1.0 // indirect
 	github.com/lucasb-eyer/go-colorful v1.2.0 // indirect

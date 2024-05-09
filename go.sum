@@ -14,8 +14,8 @@ github.com/charmbracelet/huh/spinner v0.0.0-20240508140610-13957916abf0 h1:79JTu
 github.com/charmbracelet/huh/spinner v0.0.0-20240508140610-13957916abf0/go.mod h1:Zxt9FH6togK9kY71pRJGtmyNkJ1eIWdK1gRaXrS/FKA=
 github.com/charmbracelet/lipgloss v0.10.1-0.20240506202754-3ee5dcab73cb h1:Hs3xzxHuruNT2Iuo87iS40c0PhLqpnUKBI6Xw6Ad3wQ=
 github.com/charmbracelet/lipgloss v0.10.1-0.20240506202754-3ee5dcab73cb/go.mod h1:EPP2QJ0ectp3zo6gx9f8oJGq8keirqPJ3XpYEI8wrrs=
-github.com/charmbracelet/x/exp/term v0.0.0-20240508200021-63ec5bdef608 h1:NccC6I9m6Sg/ySVkuhvx7ozKXVSS35GcT87hYZWHz7Y=
-github.com/charmbracelet/x/exp/term v0.0.0-20240508200021-63ec5bdef608/go.mod h1:YBotIGhfoWhHDlnUpJMkjebGV2pdGRCn1Y4/Nk/vVcU=
+github.com/charmbracelet/x/exp/term v0.0.0-20240509130423-e48c874ef5d2 h1:QJ8XhlOq5s+riAEKXPXVE0GzG79lBNEdwWxD2ia2Gqc=
+github.com/charmbracelet/x/exp/term v0.0.0-20240509130423-e48c874ef5d2/go.mod h1:YBotIGhfoWhHDlnUpJMkjebGV2pdGRCn1Y4/Nk/vVcU=
 github.com/cpuguy83/go-md2man/v2 v2.0.3/go.mod h1:tgQtvFlXSQOSOSIRvRPT7W67SCa46tRHOmNcaadrF8o=
 github.com/erikgeiser/coninput v0.0.0-20211004153227-1c3628e74d0f h1:Y/CXytFA4m6baUTXGLOoWe4PQhGxaX0KpnayAqC48p4=
 github.com/erikgeiser/coninput v0.0.0-20211004153227-1c3628e74d0f/go.mod h1:vw97MGsxSvLiUE2X8qFplwetxpGLQrlU1Q9AUEIzCaM=
