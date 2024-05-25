@@ -1,10 +1,10 @@
 module github.com/alvaro17f/nixup
 
-go 1.22.3
+go 1.22
 
 require (
-	github.com/charmbracelet/huh v0.4.0
-	github.com/charmbracelet/huh/spinner v0.0.0-20240525145816-4001009c1a22
+	github.com/charmbracelet/huh v0.4.2
+	github.com/charmbracelet/huh/spinner v0.0.0-20240525174423-9c35d2dc235b
 	github.com/charmbracelet/lipgloss v0.11.0
 	github.com/spf13/cobra v1.8.0
 )
